@@ -72,6 +72,14 @@ let s:nord3_gui_brightened = [
   \ "#7b88a1",
 \ ]
 
+function! NordPalette() abort
+  let ret = {}
+  for color in range(16)
+    execute 'let ret["nord'.color.'"] = s:nord'.color.'_gui'
+  endfor
+  return ret
+endfunction
+
 if !exists("g:nord_bold")
   let g:nord_bold = 1
 endif
@@ -174,9 +182,9 @@ call s:hi("LineNr", s:nord3_gui, "NONE", s:nord3_term, "NONE", "", "")
 call s:hi("MatchParen", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "", "")
 call s:hi("NonText", s:nord2_gui, "", s:nord3_term, "", "", "")
 call s:hi("Normal", s:nord4_gui, s:nord0_gui, "NONE", "NONE", "", "")
-call s:hi("PMenu", s:nord4_gui, s:nord2_gui, "NONE", s:nord1_term, "NONE", "")
+call s:hi("Pmenu", s:nord4_gui, s:nord2_gui, "NONE", s:nord1_term, "NONE", "")
 call s:hi("PmenuSbar", s:nord4_gui, s:nord2_gui, "NONE", s:nord1_term, "", "")
-call s:hi("PMenuSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "", "")
+call s:hi("PmenuSel", s:nord8_gui, s:nord3_gui, s:nord8_term, s:nord3_term, "", "")
 call s:hi("PmenuThumb", s:nord8_gui, s:nord3_gui, "NONE", s:nord3_term, "", "")
 call s:hi("SpecialKey", s:nord3_gui, "", s:nord3_term, "", "", "")
 call s:hi("SpellBad", s:nord11_gui, s:nord0_gui, s:nord11_term, "NONE", "undercurl", s:nord11_gui)
@@ -578,6 +586,16 @@ call s:hi("LSPDiagnosticsError" , s:nord11_gui, "", s:nord11_term, "", "", "")
 call s:hi("LSPDiagnosticsInformation" , s:nord8_gui, "", s:nord8_term, "", "", "")
 call s:hi("LSPDiagnosticsHint" , s:nord10_gui, "", s:nord10_term, "", "", "")
 
+call s:hi("LspDiagnosticsDefaultWarning", s:nord13_gui, "", s:nord13_term, "", "", "")
+call s:hi("LspDiagnosticsDefaultError" , s:nord11_gui, "", s:nord11_term, "", "", "")
+call s:hi("LspDiagnosticsDefaultInformation" , s:nord8_gui, "", s:nord8_term, "", "", "")
+call s:hi("LspDiagnosticsDefaultHint" , s:nord10_gui, "", s:nord10_term, "", "", "")
+
+call s:hi("LspDiagnosticsUnderlineWarning", "", "", "", "", "", s:nord13_gui)
+call s:hi("LspDiagnosticsUnderlineError" , "", "", "", "", "", s:nord11_gui)
+call s:hi("LspDiagnosticsUnderlineInformation" , "", "", "", "", "", s:nord8_gui)
+call s:hi("LspDiagnosticsUnderlineHint" , "", "", "", "", "", s:nord10_gui)
+
 " GitGutter
 " > airblade/vim-gitgutter
 call s:hi("GitGutterAdd", s:nord14_gui, "", s:nord14_term, "", "", "")
@@ -772,3 +790,58 @@ hi! link VimwikiList markdownListMarker
 " YAML
 " > stephpy/vim-yaml
 call s:hi("yamlKey", s:nord7_gui, "", s:nord7_term, "", "", "")
+
+" Treesitter
+if has('nvim')
+    if exists('g:loaded_nvim_treesitter')
+        call s:hi("TSError", s:nord11_gui, 131, "", "", "underline", "underline")
+        call s:hi("TSPunctDelimiter", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSPunctBracket", s:nord6_gui,255, "", "", "", "")
+        call s:hi("TSPunctSpecial", s:nord6_gui,255, "", "", "", "")
+        call s:hi("TSConstant", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSConstBuiltin", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSConstMacro", s:nord7_gui, 109, "", "", "", "")
+        call s:hi("TSStringRegex", s:nord14_gui, 144, "", "", "", "")
+        call s:hi("TSString", s:nord14_gui, 144, "", "", "", "")
+        call s:hi("TSStringEscape", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSCharacter", s:nord14_gui, 144, "", "", "", "")
+        call s:hi("TSNumber", s:nord15_gui, 139, "", "", "", "")
+        call s:hi("TSBoolean", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSFloat", s:nord15_gui, 139, "", "", "", "")
+        call s:hi("TSAnnotation", s:nord12_gui, 173, "", "", "", "")
+        call s:hi("TSAttribute", s:nord7_gui, 109, "", "", "", "")
+        call s:hi("TSNamespace", s:nord7_gui, 201, "", "", "", "")
+        call s:hi("TSFuncBuiltin", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSFunction", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSFuncMacro", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSParameter", s:nord15_gui, 255, "", "", "", "")
+        call s:hi("TSParameterReference", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSMethod", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSField", s:nord5_gui, 255, "", "", "", "")
+        call s:hi("TSProperty", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSConstructor", s:nord7_gui, 109, "", "", "", "")
+        call s:hi("TSConditional", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSRepeat", s:nord15_gui, 139, "", "", "", "")
+        call s:hi("TSLabel", s:nord8_gui, 110, "", "", "", "")
+        call s:hi("TSKeyword", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSKeywordFunction", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSKeywordOperator", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSOperator", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSException", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSType", s:nord7_gui, 109, "", "", "", "")
+        call s:hi("TSTypeBuiltin", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSStructure", s:nord7_gui, 201, "", "", "", "")
+        call s:hi("TSInclude", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSVariable", s:nord5_gui, 255, "", "", "", "")
+        call s:hi("TSVariableBuiltin", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSText", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSStrong", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSEmphasis", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSUnderline", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSTitle", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSLiteral", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSURI", s:nord4_gui, 226, "", "", "", "")
+        call s:hi("TSTag", s:nord9_gui, 109, "", "", "", "")
+        call s:hi("TSTagDelimiter", s:nord3_gui, 241, "", "", "", "")
+    endif
+  endif
