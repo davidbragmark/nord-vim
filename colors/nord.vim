@@ -13,6 +13,7 @@ if version > 580
 endif
 
 let g:colors_name = "nord"
+let g:nord_contrast_dark = 'hard'
 let s:nord_vim_version="0.15.0"
 set background=dark
 
@@ -227,9 +228,11 @@ endif
 "+--- Gutter ---+
 call s:hi("CursorColumn", "", s:nord1_gui, "NONE", s:nord1_term, "", "")
 if g:nord_cursor_line_number_background == 0
-  call s:hi("CursorLineNr", s:nord4_gui, "", "NONE", "", "NONE", "")
+  "call s:hi("CursorLineNr", s:nord4_gui, "", "NONE", "", "NONE", "")
+  call s:hi("CursorLineNr", s:nord8_gui, "NONE", "NONE", s:nord1_term, "NONE", "")
 else
-  call s:hi("CursorLineNr", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
+  "call s:hi("CursorLineNr", s:nord4_gui, s:nord1_gui, "NONE", s:nord1_term, "NONE", "")
+  call s:hi("CursorLineNr", s:nord8_gui, "NONE", "NONE", s:nord1_term, "NONE", "")
 endif
 call s:hi("Folded", s:nord3_gui, s:nord1_gui, s:nord3_term, s:nord1_term, s:bold, "")
 call s:hi("FoldColumn", s:nord3_gui, s:nord0_gui, s:nord3_term, "NONE", "", "")
@@ -289,7 +292,7 @@ call s:hi("Delimiter", s:nord6_gui, "", s:nord6_term, "", "", "")
 call s:hi("Exception", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Float", s:nord15_gui, "", s:nord15_term, "", "", "")
 call s:hi("Function", s:nord8_gui, "", s:nord8_term, "", "", "")
-call s:hi("Identifier", s:nord4_gui, "", "NONE", "", "NONE", "")
+call s:hi("Identifier", s:nord7_gui, "", "NONE", "", "NONE", "")
 call s:hi("Include", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Keyword", s:nord9_gui, "", s:nord9_term, "", "", "")
 call s:hi("Label", s:nord9_gui, "", s:nord9_term, "", "", "")
@@ -801,8 +804,8 @@ if has('nvim')
         call s:hi("TSConstant", s:nord8_gui, 110, "", "", "", "")
         call s:hi("TSConstBuiltin", s:nord9_gui, 109, "", "", "", "")
         call s:hi("TSConstMacro", s:nord7_gui, 109, "", "", "", "")
-        call s:hi("TSStringRegex", s:nord14_gui, 144, "", "", "", "")
-        call s:hi("TSString", s:nord14_gui, 144, "", "", "", "")
+        call s:hi("TSStringRegex", s:nord14_gui, 144, "", "", "", "italic")
+        call s:hi("TSString", s:nord14_gui, 144, "", "", "", "italic")
         call s:hi("TSStringEscape", s:nord8_gui, 110, "", "", "", "")
         call s:hi("TSCharacter", s:nord14_gui, 144, "", "", "", "")
         call s:hi("TSNumber", s:nord15_gui, 139, "", "", "", "")
