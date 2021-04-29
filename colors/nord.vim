@@ -13,9 +13,10 @@ if version > 580
 endif
 
 let g:colors_name = "nord"
-let g:nord_contrast_dark = 'hard'
 let s:nord_vim_version="0.15.0"
 set background=dark
+
+let g:nord_contrast_dark = 'hard'
 
 let s:nord0_gui = "#2E3440"
 let s:nord1_gui = "#3B4252"
@@ -408,6 +409,10 @@ hi! link diffRemoved DiffDelete
 
 call s:hi("gitconfigVariable", s:nord7_gui, "", s:nord7_term, "", "", "")
 
+call s:hi("elixirModuleDeclaration", s:nord7_gui, "", s:nord7_term, "", "", "")
+call s:hi("elixirAlias", s:nord7_gui, "", s:nord7_term, "", "", "")
+call s:hi("elixirAtom", s:nord6_gui, "", s:nord6_term, "", s:bold, "")
+
 call s:hi("goBuiltins", s:nord7_gui, "", s:nord7_term, "", "", "")
 hi! link goConstants Keyword
 
@@ -476,6 +481,7 @@ hi! link markdownLinkTextDelimiter Keyword
 hi! link markdownListMarker Keyword
 hi! link markdownRule Keyword
 hi! link markdownHeadingDelimiter Keyword
+
 
 call s:hi("perlPackageDecl", s:nord7_gui, "", s:nord7_term, "", "", "")
 
@@ -561,6 +567,16 @@ hi! link xmlTagName Keyword
 call s:hi("yamlBlockMappingKey", s:nord7_gui, "", s:nord7_term, "", "", "")
 hi! link yamlBool Keyword
 hi! link yamlDocumentStart Keyword
+
+" Mail
+call s:hi("mailQuoted1",  s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("mailQuoted2",  s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("mailQuoted3",  s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("mailQuoted4",  s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("mailQuoted5",  s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("mailQuoted6",  s:nord3_gui, "", s:nord3_term, "", "", "")
+call s:hi("mailURL",      s:nord8_gui, "", s:nord8_term, "", "", "")
+call s:hi("mailEmail",    s:nord8_gui, "", s:nord8_term, "", "", "")
 
 "+----------------+
 "+ Plugin Support +
